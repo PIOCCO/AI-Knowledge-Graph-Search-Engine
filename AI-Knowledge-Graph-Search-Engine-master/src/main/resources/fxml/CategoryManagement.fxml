@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.controller.CategoryController"
+      spacing="20" style="-fx-background-color: #f5f7fa;">
+
+    <padding>
+        <Insets top="30" bottom="30" left="30" right="30"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <Label text="📁 Category Management" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="searchField" promptText="Search categories..." onAction="#handleSearch"
+                   prefWidth="250" style="-fx-padding: 8px 15px; -fx-background-radius: 20px;"/>
+    </HBox>
+
+    <!-- Actions -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="➕ Add Category" onAction="#handleAddCategory" styleClass="action-button-primary"/>
+        <Button text="🔄 Refresh" onAction="#handleRefresh" styleClass="action-button-secondary"/>
+    </HBox>
+
+    <!-- Category Table -->
+    <TableView fx:id="categoryTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+        <columns>
+            <TableColumn fx:id="colCategoryId" text="ID" prefWidth="80"/>
+            <TableColumn fx:id="colName" text="Name" prefWidth="150"/>
+            <TableColumn fx:id="colDescription" text="Description" prefWidth="300"/>
+            <TableColumn fx:id="colColor" text="Color" prefWidth="150"/>
+            <TableColumn fx:id="colTicketCount" text="Tickets" prefWidth="100"/>
+            <TableColumn fx:id="colActions" text="Actions" prefWidth="120"/>
+        </columns>
+        <placeholder>
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="📁" style="-fx-font-size: 48px; -fx-opacity: 0.3;"/>
+                <Label text="No categories found" styleClass="empty-state-text"/>
+            </VBox>
+        </placeholder>
+    </TableView>
+</VBox>

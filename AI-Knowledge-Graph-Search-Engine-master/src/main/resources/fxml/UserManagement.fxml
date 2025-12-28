@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.controller.UserManagementController"
+      spacing="20" style="-fx-background-color: #f5f7fa;">
+
+    <padding>
+        <Insets top="30" bottom="30" left="30" right="30"/>
+    </padding>
+
+    <!-- Header -->
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <Label text="👥 User Management" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="searchField" promptText="Search users..." onAction="#handleSearch"
+                   prefWidth="250" style="-fx-padding: 8px 15px; -fx-background-radius: 20px;"/>
+    </HBox>
+
+    <!-- Filters and Actions -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="➕ Add User" onAction="#handleAddUser" styleClass="action-button-primary"/>
+        <Button text="🔄 Refresh" onAction="#handleRefresh" styleClass="action-button-secondary"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="roleFilter" styleClass="filter-combo" prefWidth="150"/>
+        <ComboBox fx:id="statusFilter" styleClass="filter-combo" prefWidth="150"/>
+    </HBox>
+
+    <!-- User Table -->
+    <TableView fx:id="userTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+        <columns>
+            <TableColumn fx:id="colUserId" text="User ID" prefWidth="80"/>
+            <TableColumn fx:id="colUsername" text="Username" prefWidth="150"/>
+            <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+            <TableColumn fx:id="colRole" text="Role" prefWidth="130"/>
+            <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+            <TableColumn fx:id="colJoinedDate" text="Joined Date" prefWidth="120"/>
+            <TableColumn fx:id="colActions" text="Actions" prefWidth="120"/>
+        </columns>
+        <placeholder>
+            <VBox alignment="CENTER" spacing="10">
+                <Label text="👥" style="-fx-font-size: 48px; -fx-opacity: 0.3;"/>
+                <Label text="No users found" styleClass="empty-state-text"/>
+            </VBox>
+        </placeholder>
+    </TableView>
+</VBox>
